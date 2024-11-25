@@ -38,3 +38,20 @@ print(lista)
 mio_modulo.solopositivoERovescio(int(input("inserisci un numero positivo: ")))
 """
 
+"""
+lista = mio_modulo(input("Inserisci una lista di numeri separati da spazi: ").split())
+"""
+
+
+"""
+mio_modulo.calcolatrice()
+"""
+
+
+"""
+mio_modulo.gioco()
+"""
+
+"""
+mio_modulo.listaSpesa()
+"""

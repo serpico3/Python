@@ -35,8 +35,78 @@ def riepilogo(lista):
 
 def solopositivoERovescio(n):
     if n <= 0:
-        Exception("Il numero deve essere positivo")
+        Exception(print("Errore: per favore inserisci un numero positivo."))
     else:
         while n >= 0:
             print(n)
             n -= 1
+
+def verificaListaOrdinata(lista):
+    try:
+        lista = [int(i) for i in lista]
+    except ValueError:
+        print("Errore: per favore inserisci solo numeri.")
+    if lista == sorted(lista):
+        print("La lista è ordinata.")
+    else:
+        print("La lista non è ordinata.")
+
+def calcolatrice():
+    while True:
+        operazione = input("Quale operazione vuoi eseguire? (+, -, *, /) ")
+        if operazione == "fine":
+            break
+        if operazione not in ["+", "-", "*", "/"]:
+            print("Errore: per favore inserisci un'operazione valida.")
+            continue
+        try:
+            a = int(input("Inserisci il primo numero: "))
+            b = int(input("Inserisci il secondo numero: "))
+        except ValueError:
+            print("Errore: per favore inserisci un numero valido.")
+            continue
+        if operazione == "+":
+            print(a + b)
+        elif operazione == "-":
+            print(a - b)
+        elif operazione == "*":
+            print(a * b)
+        elif operazione == "/":
+            if b == 0:
+                print("Errore: divisione per zero.")
+            else:
+                print(a / b)
+        else:
+            print("Errore: per favore inserisci un'operazione valida.")
+
+def gioco():
+    numero = random()
+    while True:
+        try:
+            guess = int(input("Indovina il numero: "))
+        except ValueError:
+            print("Errore: per favore inserisci un numero valido.")
+            continue
+        if guess == numero:
+            print("Hai indovinato!")
+            break
+        elif guess < numero:
+            print("Troppo basso.")
+        elif guess > numero:
+            print("Troppo alto.")
+
+def listaSpesa():
+    lista = []
+    while True:
+        comando = input("Vuoi aggiungere un prodotto o visualizzare la lista? ")
+        if comando == "fine":
+            break
+        elif comando == "aggiungi":
+            prodotto = input("Inserisci il prodotto: ")
+            quantita = input("Inserisci la quantità: ")
+            lista.append((prodotto, quantita))
+        elif comando == "visualizza":
+            for prodotto, quantita in lista:
+                print(prodotto, quantita)
+        else:
+            print("Errore: per favore inserisci un comando valido.")
