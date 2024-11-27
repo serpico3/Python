@@ -1,8 +1,6 @@
-def printRes1(n):
-    print(1)
-    n = 1
-    return n 
-def printRes2():
+def printRes1(text):
+    print(text)
+"""def printRes2():
     print(2)
 def printRes3():
     print(3)
@@ -25,4 +23,4 @@ def sub(n):
 def mul(n):
     print("*")
 def div(n):
-    print("/")
+    print("/")"""
