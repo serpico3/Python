@@ -1,3 +1,3 @@
-def printRes1():
-    print("Hola")
+def printRes1(numero):
+    print(numero)
 
