@@ -1,0 +1,12 @@
+{
+    "1984": {
+        "autore": "George Orwell",
+        "pagine": 328,
+        "prestato": true
+    },
+    "Il Signore degli Anelli": {
+        "autore": "J.R.R. Tolkien",
+        "pagine": 1178,
+        "prestato": true
+    }
+}

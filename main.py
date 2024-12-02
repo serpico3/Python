@@ -1,66 +1,35 @@
-import random
+from gestore_biblioteca import Biblioteca
 
-# Vecchio codice
-"""
-piuDiMax = 0
+file_biblioteca = "biblioteca.json"
 
-for i in range(0, 1000):
-    disponibilita = 10000
-    puntato = 1
-    count = 0
-    max = disponibilita
-    while puntato < disponibilita:
-        numero = random.randint(0, 1)
-        if numero == 0:
-            disponibilita -= puntato
-            puntato = puntato * 2
-            
-        else:
-            disponibilita -= puntato
-            disponibilita += puntato * 2
-            puntato = 1
+biblioteca = Biblioteca(file_biblioteca)
 
-        count += 1
-        if disponibilita > max:
-            max = disponibilita
-    
-    if max > 10500:
-        piuDiMax += 1
+while True:
+    azione = input("Cosa vuoi fare? (Add/Mostra/Remove/Prestito/Fine): ").strip().lower()
+    if azione == "fine":
+        print("Uscita dal programma.")
+        break
+    elif azione == "add":
+        titolo = input("Inserisci il titolo: ").strip()
+        autore = input("Inserisci l'autore: ").strip()
+        try:
+            pagine = int(input("Inserisci il numero di pagine: ").strip())
+        except ValueError:
+            print("Errore: il numero di pagine deve essere un intero.")
+            continue
 
-print(piuDiMax)
-"""
-
-perdite_totali = 0
-guadagni_totali = 0
-piuDiMax = 0
-
-for i in range(0, 100):
-    disponibilita = 10000
-    puntato = disponibilita / 100
-    sconfitte = 0
-    max = disponibilita
-    puntate_perse= 0
-    for i in range(0, 100):
-        numero = random.randint(0, 1)
-        if numero == 0:
-            disponibilita -= puntato
-            sconfitte += 1
-            perdite_totali += puntato  # Aggiungi la puntata persa alle perdite
-        else:
-            disponibilita -= puntato
-            disponibilita += puntato * 2
-            guadagni_totali += puntato * 2  # Guadagni dalla vittoria (la puntata moltiplicata per 2)
-
-        if disponibilita > max:
-            max = disponibilita
-
-        if puntato <= 100:
-            puntate_perse += 1
-    
-    if max > 10500:
-        piuDiMax += 1
-
-print("Perdite totali:", perdite_totali)
-print("Guadagni totali:", guadagni_totali)
-print("Numero di volte che la disponibilità ha superato i 10500:", piuDiMax)
-print("Puntate perse:", puntate_perse)
+        # Aggiungi libro alla biblioteca
+        biblioteca.aggiungi_libro(titolo, autore, pagine)
+    elif azione == "mostra":
+        biblioteca.mostra_libri()
+    elif azione == "remove":
+        titolo = input("Inserisci il titolo del libro da rimuovere: ").strip()
+        biblioteca.remove_libro(titolo)
+    elif azione == "prestito":
+        titolo = input("Inserisci il titolo del libro da prestare: ").strip()
+        biblioteca.prestito_libro(titolo)
+    elif azione == "ritiro":
+        titolo = input("Inserisci il titolo del libro da ritirare: ").strip()
+        biblioteca.ritiro_libro(titolo)
+    else:
+        print("Comando non riconosciuto. Usa 'Add', 'Mostra', 'Remove', 'Prestito' o 'Fine'.")
