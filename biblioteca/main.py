@@ -1,24 +1,18 @@
-from gestore_biblioteca import Biblioteca
+from biblioteca.gestore_biblioteca import Biblioteca
 
 file_biblioteca = "biblioteca.json"
 
 biblioteca = Biblioteca(file_biblioteca)
 
 while True:
-    azione = input("Cosa vuoi fare? (Add/Mostra/Remove/Prestito/Fine): ").strip().lower()
+    azione = input("Cosa vuoi fare? (Add/Mostra/Remove/Prestito/Ritiro/Fine): ").strip().lower()
     if azione == "fine":
         print("Uscita dal programma.")
         break
     elif azione == "add":
         titolo = input("Inserisci il titolo: ").strip()
         autore = input("Inserisci l'autore: ").strip()
-        try:
-            pagine = int(input("Inserisci il numero di pagine: ").strip())
-        except ValueError:
-            print("Errore: il numero di pagine deve essere un intero.")
-            continue
-
-        # Aggiungi libro alla biblioteca
+        pagine = int(input("Inserisci il numero di pagine: ").strip())
         biblioteca.aggiungi_libro(titolo, autore, pagine)
     elif azione == "mostra":
         biblioteca.mostra_libri()
