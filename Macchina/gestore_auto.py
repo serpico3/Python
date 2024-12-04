@@ -2,11 +2,16 @@ class Auto:
     def __init__(self, marca, modello, anno, chilometri):
         self.marca = marca
         self.modello = modello
-        self.anno = anno
-        self.chilometri = chilometri
+        self.anno = int(anno)
+        self.chilometri = int(chilometri)
 
     def __str__(self):
         return f"{self.marca} {self.modello} {self.anno} {self.chilometri}"
+    
+    def guidareVeicolo(self):
+        velocita = int(input("Inserisci la velocità desiderata: "))
+        self.chilometri = self.chilometri + velocita
+
     
 class Moto(Auto):
     def __init__(self, marca, modello, anno, chilometri, cilindrata):
@@ -14,8 +19,7 @@ class Moto(Auto):
         self.cilindrata = cilindrata
 
     def __str__(self):
-        return f"{self.marca} {self.modello} {self.anno} {self.chilometri} {self.cilindrata}"
-    
+        return f"{self.marca} {self.modello} {self.anno} {self.chilometri} {self.cilindrata}"    
 class Veicolo(Auto):
     def __init__(self, marca, modello, anno, chilometri, porte):
         super().__init__(marca, modello, anno, chilometri)
@@ -23,7 +27,6 @@ class Veicolo(Auto):
 
     def __str__(self):
         return f"{self.marca} {self.modello} {self.anno} {self.chilometri} {self.porte}"
-
 
 class Garage:
     def __init__(self):
