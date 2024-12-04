@@ -5,14 +5,22 @@ garage = gestore_auto.Garage()
 while True:
     print("\nInserisci i dettagli di un'auto (oppure digita 'stop' per terminare):")
     marca = input("Marca: ")
-    if marca.lower() == 'stop':
-        break
     modello = input("Modello: ")
+    anno = input("Anno: ")
+    chilometri = input("Chilometri: ")
+    var = input("Modello? (Auto/Moto): ")
+    
 
-    # Creazione dell'oggetto Auto e aggiunta al garage
-    auto = gestore_auto.Auto(marca, modello)
-    garage.aggiungi_valore(auto)
+    if var == "Auto":
+        porte = input("Porte: ")
+        autoPorte = gestore_auto.Veicolo(marca, modello, anno, chilometri, porte)
+        garage.aggiungi_valore(autoPorte)
+    elif var == "Moto":
+        cilindrata = input("Cilindrata: ")
+        autoCilindrata = gestore_auto.Moto(marca, modello, anno, chilometri, cilindrata)
+        garage.aggiungi_valore(autoCilindrata)
+    else:
+        print("veicolo non esistente")
 
-    # Mostra il contenuto del garage
     print("\nLe auto nel garage sono:")
     garage.mostra_valori()
